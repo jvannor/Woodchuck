@@ -10,6 +10,7 @@ services:
     image: ${DOCKER_REGISTRY-}woodchuck-adminweb:${TAG:-latest}${PLATFORM_SUFFIX}
     ports:
       - "2018:80"
+    restart: always
 
   monitorapi:
     build:
@@ -21,12 +22,15 @@ services:
     image: ${DOCKER_REGISTRY-}woodchuck-monitorapi:${TAG:-latest}${PLATFORM_SUFFIX}
     ports:
       - "1018:80"
+    restart: always
 
   postgres:
     image: ${DOCKER_REGISTRY-}woodchuck-postgres:${TAG:-latest}${PLATFORM_SUFFIX}
+    restart: always
 
   rabbitmq:
     image: ${DOCKER_REGISTRY-}woodchuck-rabbitmq:${TAG:-latest}${PLATFORM_SUFFIX}
+    restart: always
     
   workerservice:
     build:
@@ -36,3 +40,4 @@ services:
       - postgres
       - rabbitmq
     image: ${DOCKER_REGISTRY-}woodchuck-workerservice:${TAG:-latest}${PLATFORM_SUFFIX}
+    restart: always
