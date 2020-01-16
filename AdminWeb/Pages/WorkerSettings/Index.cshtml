@@ -1,0 +1,42 @@
+﻿@page
+@model AdminWeb.Pages.WorkerSettings.IndexModel
+
+@{
+    ViewData["Title"] = "Worker Settings";
+}
+
+<h1>Worker Settings</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.WorkerSettings[0].Key)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WorkerSettings[0].Value)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.WorkerSettings) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Key)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Value)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,37 @@
+﻿@page
+@model AdminWeb.Pages.NotificationSettings.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Notification Settings</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NotificationSettings.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NotificationSettings.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NotificationSettings.Telephone)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NotificationSettings.Telephone)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NotificationSettings.Enabled)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NotificationSettings.Enabled)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.NotificationSettings.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

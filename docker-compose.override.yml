@@ -1,0 +1,18 @@
+version: '3.4'
+
+services:
+  adminweb:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_ConnectionStrings__WoodchuckDb=Host=postgres;Database=WoodchuckDb;Username=postgres;Password=
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+  monitorapi:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_ConnectionStrings__WoodchuckDb=Host=postgres;Database=WoodchuckDb;Username=postgres;Password=
+  workerservice:
+    environment:
+      - ASPNETCORE_ConnectionStrings__WoodchuckDb=Host=postgres;Database=WoodchuckDb;Username=postgres;Password=
+      - ConnectionStrings__WoodchuckDb=Host=postgres;Database=WoodchuckDb;Username=postgres;Password=

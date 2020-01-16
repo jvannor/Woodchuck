@@ -1,0 +1,38 @@
+version: '3.4'
+
+services:
+  adminweb:
+    build:
+      context: .
+      dockerfile: AdminWeb/Dockerfile${PLATFORM_EXT}
+    depends_on:
+      - postgres
+    image: ${DOCKER_REGISTRY-}woodchuck-adminweb:${TAG:-latest}${PLATFORM_SUFFIX}
+    ports:
+      - "2018:80"
+
+  monitorapi:
+    build:
+      context: .
+      dockerfile: MonitorAPI/Dockerfile${PLATFORM_EXT}
+    depends_on:
+      - postgres
+      - rabbitmq
+    image: ${DOCKER_REGISTRY-}woodchuck-monitorapi:${TAG:-latest}${PLATFORM_SUFFIX}
+    ports:
+      - "1018:80"
+
+  postgres:
+    image: ${DOCKER_REGISTRY-}woodchuck-postgres:${TAG:-latest}${PLATFORM_SUFFIX}
+
+  rabbitmq:
+    image: ${DOCKER_REGISTRY-}woodchuck-rabbitmq:${TAG:-latest}${PLATFORM_SUFFIX}
+    
+  workerservice:
+    build:
+      context: .
+      dockerfile: WorkerService/Dockerfile${PLATFORM_EXT}
+    depends_on:
+      - postgres
+      - rabbitmq
+    image: ${DOCKER_REGISTRY-}woodchuck-workerservice:${TAG:-latest}${PLATFORM_SUFFIX}

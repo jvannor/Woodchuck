@@ -1,0 +1,4 @@
+FROM arm32v7/postgres
+WORKDIR /docker-entrypoint-initdb.d
+
+COPY *.sql .

@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>dotnet-WorkerService-05E278F7-7376-4D85-B14E-F733808AB1A3</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="azure.storage.blobs" Version="12.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.9.10" />
+    <PackageReference Include="rabbitmq.client" Version="5.1.2" />
+    <PackageReference Include="sixlabors.imagesharp" Version="1.0.0-beta0007" />
+    <PackageReference Include="sixlabors.imagesharp.drawing" Version="1.0.0-beta0007" />
+    <PackageReference Include="twilio" Version="5.37.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\UtilityLib\UtilityLib.csproj" />
+  </ItemGroup>
+</Project>
